@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/kefirjs/jest-kefir#readme",
   "dependencies": {
-    "deep-eql": "^3.0.1",
+    "jest-diff": "^24.0.0",
     "kefir-test-utils": "^1.0.0"
   },
   "peerDependencies": {

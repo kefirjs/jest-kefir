@@ -1,4 +1,5 @@
 import createTestHelpers from 'kefir-test-utils'
+import diff from 'jest-diff'
 
 const noop = () => {}
 
@@ -59,9 +60,34 @@ export default function jestKefir(Kefir) {
       cb()
       unwatch()
 
+      const options = {
+        comment: 'Emitted values',
+        isNot: this.isNot,
+        promise: this.promise,
+      }
+      const pass = this.equals(log, expected)
+      const message = pass
+        ? () =>
+            this.utils.matcherHint('toEmit', undefined, undefined, options) +
+            '\n\n' +
+            `Expected: not ${this.utils.printExpected(expected)}\n` +
+            `Received: ${this.utils.printReceived(log)}`
+        : () => {
+            const diffString = diff(expected, log, {
+              expand: this.expand,
+            })
+            return (
+              this.utils.matcherHint('toEmit', undefined, undefined, options) +
+              '\n\n' +
+              (diffString && diffString.includes('- Expect')
+                ? `Difference:\n\n${diffString}`
+                : `Expected: ${this.utils.printExpected(expected)}\n` + `Received: ${this.utils.printReceived(log)}`)
+            )
+          }
+
       return {
-        pass: this.equals(log, expected),
-        message: () => `expected Observable to emit matching values`,
+        pass,
+        message,
       }
     },
 
@@ -74,9 +100,34 @@ export default function jestKefir(Kefir) {
         tick(timeLimit)
       }, reverseSimultaneous)
 
+      const options = {
+        comment: 'Emitted values',
+        isNot: this.isNot,
+        promise: this.promise,
+      }
+      const pass = this.equals(log, expected)
+      const message = pass
+        ? () =>
+            this.utils.matcherHint('toEmitInTime', undefined, undefined, options) +
+            '\n\n' +
+            `Expected: not ${this.utils.printExpected(expected)}\n` +
+            `Received: ${this.utils.printReceived(log)}`
+        : () => {
+            const diffString = diff(expected, log, {
+              expand: this.expand,
+            })
+            return (
+              this.utils.matcherHint('toEmitInTime', undefined, undefined, options) +
+              '\n\n' +
+              (diffString && diffString.includes('- Expect')
+                ? `Difference:\n\n${diffString}`
+                : `Expected: ${this.utils.printExpected(expected)}\n` + `Received: ${this.utils.printReceived(log)}`)
+            )
+          }
+
       return {
-        pass: this.equals(log, expected),
-        message: () => `expected Observable to emit matching values with time`,
+        pass,
+        message,
       }
     },
 
@@ -101,5 +152,16 @@ export default function jestKefir(Kefir) {
     },
   }
 
-  return {extensions, prop, stream, pool, activate, deactivate, send, value, error, end}
+  return {
+    extensions,
+    prop,
+    stream,
+    pool,
+    activate,
+    deactivate,
+    send,
+    value,
+    error,
+    end,
+  }
 }
