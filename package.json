@@ -6,9 +6,10 @@
   "scripts": {
     "build": "babel src -d dist",
     "prepublishOnly": "npm test && npm run build",
+    "format": "prettier src/*.js test/*.js --write",
     "test": "npm run build && npm run test:fmt && npm run test:unit",
     "test:unit": "jest",
-    "test:fmt": "prettier src/*.js test/*.js --write"
+    "test:fmt": "prettier src/*.js test/*.js --check"
   },
   "files": [
     "dist",
@@ -31,15 +32,14 @@
     "kefir-test-utils": "^1.0.0"
   },
   "peerDependencies": {
-    "jest": "^23.0.0",
+    "jest": "^24.0.0",
     "kefir": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
-    "babel-core": "^7.0.0-bridge.0",
-    "jest": "^23.0.0",
+    "jest": "^24.0.0",
     "kefir": "^3.8.0",
     "prettier": "^1.15.2"
   }
