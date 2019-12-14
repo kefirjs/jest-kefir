@@ -171,17 +171,30 @@ describe('jest-kefir', () => {
   describe('toEmitInTime', () => {
     it('should emit into stream over time', () => {
       const a = stream()
-      expect(a.delay(10)).toEmitInTime([[10, value(1)], [10, value(2)], [20, value(3)]], tick => {
-        send(a, [value(1), value(2)])
-        tick(10)
-        send(a, [value(3)])
-      })
+      expect(a.delay(10)).toEmitInTime(
+        [
+          [10, value(1)],
+          [10, value(2)],
+          [20, value(3)],
+        ],
+        tick => {
+          send(a, [value(1), value(2)])
+          tick(10)
+          send(a, [value(3)])
+        }
+      )
     })
 
     it('should emit into stream over time in reverse', () => {
       const a = stream()
       expect(a.delay(10)).toEmitInTime(
-        [[10, value(1)], [10, value(2)], [20, value(3)], [20, value(4)], [20, value(5)]],
+        [
+          [10, value(1)],
+          [10, value(2)],
+          [20, value(3)],
+          [20, value(4)],
+          [20, value(5)],
+        ],
         tick => {
           send(a, [value(1), value(2)])
           tick(10)
