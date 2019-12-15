@@ -3,13 +3,14 @@
   "version": "2.0.0",
   "description": "Jest plugin for asserting on Kefir Observables",
   "main": "dist/index.js",
+  "types": "jest-kefir.d.ts",
   "scripts": {
     "build": "babel src -d dist",
     "prepublishOnly": "npm test && npm run build",
-    "format": "prettier src/*.js test/*.js --write",
+    "fmt": "prettier src/*.js test/*.js jest-kefir.d.ts --write",
     "test": "npm run build && npm run test:fmt && npm run test:unit",
     "test:unit": "jest",
-    "test:fmt": "prettier src/*.js test/*.js --check"
+    "test:fmt": "prettier src/*.js test/*.js jest-kefir.d.ts --check"
   },
   "files": [
     "dist",
