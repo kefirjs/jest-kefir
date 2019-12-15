@@ -4,20 +4,8 @@ import diff from 'jest-diff'
 const noop = () => {}
 
 export default function jestKefir(Kefir) {
-  const {
-    prop,
-    stream,
-    pool,
-    activate,
-    deactivate,
-    send,
-    value,
-    error,
-    end,
-    watch,
-    withFakeTime,
-    watchWithTime,
-  } = createTestHelpers(Kefir)
+  const helpers = createTestHelpers(Kefir)
+  const {activate, deactivate, send, error, watch, withFakeTime, watchWithTime} = helpers
 
   const extensions = {
     toBeObservable(received) {
@@ -153,15 +141,7 @@ export default function jestKefir(Kefir) {
   }
 
   return {
+    ...helpers,
     extensions,
-    prop,
-    stream,
-    pool,
-    activate,
-    deactivate,
-    send,
-    value,
-    error,
-    end,
   }
 }
