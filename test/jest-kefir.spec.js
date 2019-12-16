@@ -1,9 +1,6 @@
-import jestKefir from '../src'
-import Kefir from 'kefir'
+import '../extend-expect'
 
-const {extensions, prop, stream, pool, activate, deactivate, value, error, end, send} = jestKefir(Kefir)
-
-expect.extend(extensions)
+const {prop, stream, pool, activate, deactivate, value, error, end, send} = KTU
 
 describe('jest-kefir', () => {
   describe('toBeObservable', () => {
