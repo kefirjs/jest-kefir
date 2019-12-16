@@ -1,6 +1,6 @@
 {
   "name": "jest-kefir",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Jest plugin for asserting on Kefir Observables",
   "main": "dist/index.js",
   "types": "jest-kefir.d.ts",
