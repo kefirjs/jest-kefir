@@ -3,17 +3,22 @@
   "version": "2.0.0",
   "description": "Jest plugin for asserting on Kefir Observables",
   "main": "dist/index.js",
+  "types": "jest-kefir.d.ts",
   "scripts": {
     "build": "babel src -d dist",
     "prepublishOnly": "npm test && npm run build",
-    "format": "prettier src/*.js test/*.js --write",
-    "test": "npm run build && npm run test:fmt && npm run test:unit",
-    "test:unit": "jest",
-    "test:fmt": "prettier src/*.js test/*.js --check"
+    "fmt": "prettier src/*.js test/*.js jest-kefir.d.ts --write",
+    "test": "npm run build && npm run test:fmt && npm run test:ts && npm run test:unit",
+    "test:fmt": "prettier src/*.js test/*.js jest-kefir.d.ts --check",
+    "test:ts": "tsd",
+    "test:unit": "jest"
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "jest-kefir.d.ts",
+    "extend-expect.js",
+    "extend-expect.d,ts"
   ],
   "keywords": [
     "kefir",
@@ -28,8 +33,12 @@
   },
   "homepage": "https://github.com/kefirjs/jest-kefir#readme",
   "dependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/kefir": "^3.8.0",
+    "@types/lolex": "^2.0.0",
+    "@types/node": "^12.12.0",
     "jest-diff": "^24.0.0",
-    "kefir-test-utils": "^1.0.0"
+    "kefir-test-utils": "^1.1.1"
   },
   "peerDependencies": {
     "jest": "^24.0.0",
@@ -41,6 +50,8 @@
     "@babel/preset-env": "^7.2.3",
     "jest": "^24.0.0",
     "kefir": "^3.8.0",
-    "prettier": "^1.15.2"
+    "prettier": "^1.15.2",
+    "tsd": "^0.11.0",
+    "typescript": "^3.7.3"
   }
 }
