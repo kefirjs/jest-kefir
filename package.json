@@ -7,9 +7,9 @@
   "scripts": {
     "build": "babel src -d dist",
     "prepublishOnly": "npm test && npm run build",
-    "fmt": "prettier src/*.js test/*.js jest-kefir.d.ts --write",
+    "fmt": "prettier src/*.js test/*.js *.*d.ts extend-expect.js --write",
     "test": "npm run build && npm run test:fmt && npm run test:ts && npm run test:unit",
-    "test:fmt": "prettier src/*.js test/*.js jest-kefir.d.ts --check",
+    "test:fmt": "prettier src/*.js test/*.js *.*d.ts extend-expect.js --check",
     "test:ts": "tsd",
     "test:unit": "jest"
   },
@@ -18,7 +18,7 @@
     "src",
     "jest-kefir.d.ts",
     "extend-expect.js",
-    "extend-expect.d,ts"
+    "extend-expect.d.ts"
   ],
   "keywords": [
     "kefir",
@@ -33,8 +33,8 @@
   },
   "homepage": "https://github.com/kefirjs/jest-kefir#readme",
   "dependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/kefir": "^3.8.0",
+    "@types/jest": "^24.0.0",
+    "@types/kefir": "^3.0.0",
     "@types/lolex": "^2.0.0",
     "@types/node": "^12.12.0",
     "jest-diff": "^24.0.0",
