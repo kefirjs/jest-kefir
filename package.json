@@ -37,7 +37,7 @@
     "@types/kefir": "^3.0.0",
     "@types/lolex": "^2.0.0",
     "@types/node": "^13.1.4",
-    "jest-diff": "^24.0.0",
+    "jest-diff": "^25.2.3",
     "kefir-test-utils": "^1.1.1"
   },
   "peerDependencies": {
