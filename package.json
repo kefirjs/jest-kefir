@@ -35,7 +35,7 @@
   "dependencies": {
     "@types/jest": "^25.1.5",
     "@types/kefir": "^3.0.0",
-    "@types/lolex": "^2.0.0",
+    "@types/lolex": "^5.1.0",
     "@types/node": "^13.1.4",
     "jest-diff": "^24.0.0",
     "kefir-test-utils": "^1.1.1"
