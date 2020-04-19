@@ -32,6 +32,9 @@
     "url": "https://github.com/kefirjs/jest-kefir/issues"
   },
   "homepage": "https://github.com/kefirjs/jest-kefir#readme",
+  "engines" : {
+    "node" : ">=8"
+  },
   "dependencies": {
     "@types/jest": "^25.1.5",
     "@types/kefir": "^3.0.0",

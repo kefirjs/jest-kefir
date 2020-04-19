@@ -3,7 +3,10 @@
     [
       "@babel/preset-env",
       {
-        "modules": "umd"
+        "modules": "commonjs",
+        "targets": {
+          "node": "8"
+        }
       }
     ]
   ]
