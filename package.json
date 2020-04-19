@@ -11,7 +11,7 @@
     "test": "npm run build && npm run test:fmt && npm run test:ts && npm run test:unit",
     "test:fmt": "prettier src/*.js test/*.js *.*d.ts extend-expect.js --check",
     "test:ts": "tsd",
-    "test:unit": "jest"
+    "test:unit": "npx jest@^${JEST_VERSION:-25}"
   },
   "files": [
     "dist",
@@ -32,8 +32,8 @@
     "url": "https://github.com/kefirjs/jest-kefir/issues"
   },
   "homepage": "https://github.com/kefirjs/jest-kefir#readme",
-  "engines" : {
-    "node" : ">=8"
+  "engines": {
+    "node": ">=8"
   },
   "dependencies": {
     "@types/jest": "^25.1.5",
@@ -43,14 +43,13 @@
     "kefir-test-utils": "^1.1.1"
   },
   "peerDependencies": {
-    "jest": "^24.0.0",
+    "jest": "^24.0.0 || ^25.0.0",
     "kefir": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
-    "jest": "^24.0.0",
     "kefir": "^3.8.0",
     "prettier": "^1.15.2",
     "tsd": "^0.11.0",

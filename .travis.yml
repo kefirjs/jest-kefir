@@ -4,3 +4,7 @@ node_js:
   - 8
   - 10
   - 12
+
+env:
+  - JEST_VERSION=24
+  - JEST_VERSION=25
