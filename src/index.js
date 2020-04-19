@@ -1,5 +1,4 @@
 import createTestHelpers from 'kefir-test-utils'
-import diff from 'jest-diff'
 
 const noop = () => {}
 
@@ -61,7 +60,7 @@ export default function jestKefir(Kefir) {
             `Expected: not ${this.utils.printExpected(expected)}\n` +
             `Received: ${this.utils.printReceived(log)}`
         : () => {
-            const diffString = diff(expected, log, {
+            const diffString = this.utils.diff(expected, log, {
               expand: this.expand,
             })
             return (
@@ -101,7 +100,7 @@ export default function jestKefir(Kefir) {
             `Expected: not ${this.utils.printExpected(expected)}\n` +
             `Received: ${this.utils.printReceived(log)}`
         : () => {
-            const diffString = diff(expected, log, {
+            const diffString = this.utils.diff(expected, log, {
               expand: this.expand,
             })
             return (
