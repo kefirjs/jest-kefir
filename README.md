@@ -2,7 +2,7 @@
 
 Jest plugin for asserting on Kefir Observables.
 
-[![Build Status](https://travis-ci.org/kefirjs/jest-kefir.svg?branch=master)](https://travis-ci.org/kefirjs/jest-kefir)
+[![Build Status](https://github.com/kefirjs/jest-kefir/actions/workflows/continuous_integration.yml/badge.svg)](https://github.com/kefirjs/jest-kefir/actions?query=workflow%3ACI)
 
 ---
 
