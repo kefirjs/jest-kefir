@@ -11,7 +11,7 @@
     "test": "npm run build && npm run test:fmt && npm run test:ts && npm run test:unit",
     "test:fmt": "prettier src/*.js test/*.js *.*d.ts extend-expect.js --check",
     "test:ts": "tsd",
-    "test:unit": "npx jest@^${JEST_VERSION:-25}"
+    "test:unit": "npx jest@^${JEST_VERSION:-27}"
   },
   "files": [
     "dist",
