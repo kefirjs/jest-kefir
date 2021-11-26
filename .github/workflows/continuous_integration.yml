@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
+        jest-version: [24, 25, 26, 27]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,5 +26,12 @@ jobs:
     - name: Install node modules
       run: npm ci
 
+    - name: Install jest version
+      env:
+        JEST_VERSION: ${{ matrix.jest-version }}
+      run: npm install jest@$JEST_VERSION
+
     - name: Run tests
+      env:
+        JEST_VERSION: ${{ matrix.jest-version }}
       run: npm test
