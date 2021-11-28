@@ -82,13 +82,18 @@ export default function jestKefir(Kefir) {
       let log,
         unwatch = null
 
-      withFakeTime((tick, clock) => {
-        // prettier-ignore
-        ({log, unwatch} = watchWithTime(received))
-        cb(tick, clock)
-        tick(timeLimit)
-      }, reverseSimultaneous)
-      unwatch()
+      try {
+        withFakeTime((tick, clock) => {
+          // prettier-ignore
+          ({log, unwatch} = watchWithTime(received))
+          cb(tick, clock)
+          tick(timeLimit)
+        }, reverseSimultaneous)
+      } catch (e) {
+        throw e
+      } finally {
+        unwatch()
+      }
 
       const options = {
         comment: 'Emitted values',
