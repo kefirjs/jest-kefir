@@ -1,8 +1,16 @@
 import '../extend-expect'
 
-const {activate, deactivate, end, error, pool, prop, send, stream, value} = KTU
+const {activate, deactivate, end, error, observables, pool, prop, send, stream, value} = KTU
 
 describe('jest-kefir', () => {
+  beforeEach(() => {
+    observables.clear()
+  })
+
+  afterEach(() => {
+    expect(observables.active.length).toEqual(0)
+  })
+
   describe('toBeObservable', () => {
     it('should match with stream', () => {
       expect(stream()).toBeObservable()
@@ -83,12 +91,14 @@ describe('jest-kefir', () => {
       const a = stream()
       activate(a)
       expect(a).toBeActiveObservable()
+      deactivate(a)
     })
 
     it('should match on active stream when called as method', () => {
       const a = stream()
       activate(a)
       expect(a).toBeActiveObservable()
+      deactivate(a)
     })
 
     it('should negate on inactive property', () => {
@@ -99,6 +109,7 @@ describe('jest-kefir', () => {
       const a = prop()
       activate(a)
       expect(a).toBeActiveObservable()
+      deactivate(a)
     })
 
     it('should negate on activated and deactivated property', () => {
