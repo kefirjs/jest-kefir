@@ -174,7 +174,7 @@ describe('jest-kefir', () => {
           [10, value(2)],
           [20, value(3)],
         ],
-        tick => {
+        (tick) => {
           send(a, [value(1), value(2)])
           tick(10)
           send(a, [value(3)])
@@ -192,7 +192,7 @@ describe('jest-kefir', () => {
           [20, value(4)],
           [20, value(5)],
         ],
-        tick => {
+        (tick) => {
           send(a, [value(1), value(2)])
           tick(10)
           send(a, [value(3), value(4), value(5)])
