@@ -8,7 +8,7 @@ declare namespace jest {
     toEmit<V, E>(events: import('kefir-test-utils').Event<V, E>[], cb?: () => void): R
     toEmitInTime<V, E>(
       events: import('kefir-test-utils').EventWithTime<V, E>[],
-      cb?: (tick: (s: number) => void, clock: import('lolex').Clock) => void,
+      cb?: (tick: (s: number) => void, clock: import('@sinonjs/fake-timers').Clock) => void,
       opts?: {reverseSimultaneous?: boolean; timeLimit?: number}
     ): R
     toFlowErrors<V, E>(source?: import('kefir').Observable<V, E>): R

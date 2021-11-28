@@ -79,13 +79,16 @@ export default function jestKefir(Kefir) {
     },
 
     toEmitInTime(received, expected, cb = noop, {timeLimit = 10000, reverseSimultaneous = false} = {}) {
-      let log = null
+      let log,
+        unwatch = null
 
       withFakeTime((tick, clock) => {
-        log = watchWithTime(received)
+        // prettier-ignore
+        ({log, unwatch} = watchWithTime(received))
         cb(tick, clock)
         tick(timeLimit)
       }, reverseSimultaneous)
+      unwatch()
 
       const options = {
         comment: 'Emitted values',
