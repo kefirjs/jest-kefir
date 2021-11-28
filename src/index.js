@@ -4,7 +4,7 @@ const noop = () => {}
 
 export default function jestKefir(Kefir) {
   const helpers = createTestHelpers(Kefir)
-  const {activate, deactivate, send, error, watch, withFakeTime, watchWithTime} = helpers
+  const {activate, deactivate, error, send, watch, watchWithTime, withFakeTime} = helpers
 
   const extensions = {
     toBeObservable(received) {

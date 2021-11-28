@@ -1,6 +1,6 @@
 import '../extend-expect'
 
-const {prop, stream, pool, activate, deactivate, value, error, end, send} = KTU
+const {activate, deactivate, end, error, pool, prop, send, stream, value} = KTU
 
 describe('jest-kefir', () => {
   describe('toBeObservable', () => {
