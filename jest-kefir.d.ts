@@ -1,6 +1,6 @@
 import {Observable, Stream, Property} from 'kefir'
 import {Helpers as KHelpers, Event} from 'kefir-test-utils'
-import {Clock} from 'lolex'
+import {Clock} from '@sinonjs/fake-timers'
 
 export interface Helpers extends KHelpers {
   extensions: jest.ExpectExtendMap
