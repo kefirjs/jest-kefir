@@ -4,7 +4,7 @@ const noop = () => {}
 
 export default function jestKefir(Kefir) {
   const helpers = createTestHelpers(Kefir)
-  const {activate, deactivate, send, error, watch, withFakeTime, watchWithTime} = helpers
+  const {activate, deactivate, error, send, watch, watchWithTime, withFakeTime} = helpers
 
   const extensions = {
     toBeObservable(received) {
@@ -79,13 +79,21 @@ export default function jestKefir(Kefir) {
     },
 
     toEmitInTime(received, expected, cb = noop, {timeLimit = 10000, reverseSimultaneous = false} = {}) {
-      let log = null
+      let log,
+        unwatch = null
 
-      withFakeTime((tick, clock) => {
-        log = watchWithTime(received)
-        cb(tick, clock)
-        tick(timeLimit)
-      }, reverseSimultaneous)
+      try {
+        withFakeTime((tick, clock) => {
+          // prettier-ignore
+          ({log, unwatch} = watchWithTime(received))
+          cb(tick, clock)
+          tick(timeLimit)
+        }, reverseSimultaneous)
+      } catch (e) {
+        throw e
+      } finally {
+        unwatch()
+      }
 
       const options = {
         comment: 'Emitted values',
